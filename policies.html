@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فندق ريان الجوار | Rayan Al-Jiwar Hotel</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Tajawal & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Tajawal:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --petrol-dark: #0f3243;
+            --petrol-mid: #133F54;
+            --petrol-card: #1c4f67;
+            --islamic-gold: #C9A87C;
+            --stone-beige: #D7CCBC;
+            --white: #FFFFFF;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Montserrat', sans-serif;
+            background-color: var(--petrol-dark);
+            color: #F5F2EB;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: rgba(15, 50, 67, 0.96);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0; z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 168, 124, 0.2);
+        }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .logo h1 { font-size: 1.6rem; font-weight: 900; color: var(--islamic-gold); }
+        .logo p { font-size: 0.75rem; color: var(--stone-beige); }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .btn-back-home { background: transparent; border: 1px solid var(--islamic-gold); color: var(--islamic-gold); padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.85rem; font-weight: bold; transition: var(--transition); }
+        .btn-back-home:hover { background: var(--islamic-gold); color: var(--petrol-dark); }
+        
+        .lang-btn {
+            background: rgba(201, 168, 124, 0.15);
+            border: 1px solid var(--islamic-gold);
+            color: var(--islamic-gold);
+            padding: 6px 14px; border-radius: 20px;
+            cursor: pointer; font-weight: 700; font-size: 0.85rem;
+        }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            padding: 80px 0 40px; text-align: center;
+            background: linear-gradient(180deg, rgba(15, 50, 67, 0.85) 0%, rgba(15, 50, 67, 1) 100%), 
+                        url('https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover;
+        }
+        .page-header h2 { font-size: 2.5rem; font-weight: 900; color: var(--white); margin-bottom: 10px; }
+        .page-header p { color: var(--stone-beige); font-size: 1.1rem; }
+
+        /* --- SECTION TITLE --- */
+        .sec-title { text-align: center; margin: 40px 0 25px; }
+        .sec-title h3 { font-size: 1.8rem; font-weight: 800; color: var(--islamic-gold); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .sec-title p { color: var(--stone-beige); font-size: 0.9rem; margin-top: 5px; }
+
+        /* --- TABS NAV --- */
+        .tabs-nav { display: flex; justify-content: center; gap: 12px; margin-bottom: 35px; flex-wrap: wrap; }
+        .tab-btn { background: var(--petrol-mid); border: 1px solid rgba(201,168,124,0.3); color: var(--stone-beige); padding: 12px 22px; border-radius: 30px; cursor: pointer; font-family: 'Tajawal', sans-serif; font-weight: bold; font-size: 0.95rem; transition: var(--transition); }
+        .tab-btn.active, .tab-btn:hover { background: var(--islamic-gold); color: var(--petrol-dark); border-color: var(--islamic-gold); }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* --- ABOUT & CITY HUB --- */
+        .about-card { background: var(--petrol-card); border: 1px solid rgba(201,168,124,0.15); border-radius: 16px; padding: 30px; margin-bottom: 40px; line-height: 1.8; }
+        .about-card p { font-size: 1.05rem; margin-bottom: 15px; color: #F5F2EB; }
+        .info-tags { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 20px; }
+        .info-tag { background: rgba(0,0,0,0.15); padding: 15px; border-radius: 8px; border-left: 3px solid var(--islamic-gold); }
+        html[dir="ltr"] .info-tag { border-left: none; border-right: 3px solid var(--islamic-gold); }
+        .info-tag strong { color: var(--islamic-gold); display: block; margin-bottom: 5px; }
+
+        /* --- ROOMS UNIFIED STYLE --- */
+        .rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .room-card { background: var(--petrol-card); border-radius: 14px; border: 1px solid rgba(201,168,124,0.15); overflow: hidden; transition: var(--transition); }
+        .room-card:hover { transform: translateY(-4px); border-color: var(--islamic-gold); }
+        .room-desc-box { padding: 20px; border-bottom: 1px solid rgba(201,168,124,0.1); }
+        .room-desc-box h4 { color: var(--islamic-gold); font-size: 1.2rem; margin-bottom: 8px; }
+        .room-desc-box p { font-size: 0.9rem; color: var(--stone-beige); }
+        .room-unified-features { padding: 20px; background: rgba(0,0,0,0.1); }
+        .room-unified-features h5 { font-size: 0.85rem; color: var(--islamic-gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        .features-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; list-style: none; }
+        .features-list li { font-size: 0.85rem; color: #E0DBCE; display: flex; align-items: center; gap: 6px; }
+        .features-list li i { color: var(--islamic-gold); font-size: 0.8rem; }
+
+        /* --- POLICIES ROW --- */
+        .policy-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 40px; }
+        .policy-row { background: var(--petrol-card); border-radius: 12px; border: 1px solid rgba(201,168,124,0.15); display: grid; grid-template-columns: 250px 1fr; overflow: hidden; }
+        .policy-label { background: rgba(0, 0, 0, 0.15); padding: 20px; font-weight: 900; color: var(--islamic-gold); display: flex; align-items: center; gap: 10px; border-left: 1px solid rgba(201,168,124,0.15); }
+        html[dir="ltr"] .policy-label { border-left: none; border-right: 1px solid rgba(201,168,124,0.15); }
+        .policy-value { padding: 20px; font-size: 0.95rem; color: #F5F2EB; line-height: 1.6; display: flex; align-items: center; }
+
+        /* --- AMENITIES --- */
+        .amenities-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .amenity-card { background: var(--petrol-card); border-radius: 16px; border: 1px solid rgba(201,168,124,0.15); padding: 25px; }
+        .amenity-card h4 { font-size: 1.15rem; color: var(--islamic-gold); margin-bottom: 15px; border-bottom: 1px solid rgba(201,168,124,0.15); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .amenity-grid-items { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .amenity-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--stone-beige); }
+        .amenity-item i { color: var(--islamic-gold); width: 18px; text-align: center; }
+
+        /* --- LANDMARKS --- */
+        .landmarks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px; }
+        .landmark-card { background: var(--petrol-card); border-radius: 14px; border: 1px solid rgba(201,168,124,0.15); overflow: hidden; display: flex; flex-direction: column; }
+        .landmark-img-placeholder { height: 160px; background: linear-gradient(135deg, #133f54 0%, #0b2532 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--islamic-gold); border-bottom: 1px solid rgba(201,168,124,0.1); text-align: center; padding: 10px; }
+        .landmark-img-placeholder i { font-size: 2.2rem; margin-bottom: 8px; }
+        .landmark-img-placeholder span { font-size: 0.75rem; color: var(--stone-beige); text-transform: uppercase; letter-spacing: 1px; }
+        .landmark-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .landmark-content h4 { color: var(--white); font-size: 1.15rem; margin-bottom: 5px; }
+        .landmark-distance { font-size: 0.85rem; color: var(--islamic-gold); font-weight: bold; margin-bottom: 12px; display: flex; align-items: center; gap: 5px; }
+        .landmark-info { font-size: 0.85rem; color: var(--stone-beige); line-height: 1.6; }
+
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-floating {
+            position: fixed; bottom: 30px; z-index: 9999;
+            background: #25D366; color: #FFFFFF; padding: 12px 22px;
+            border-radius: 50px; font-size: 1rem; font-weight: bold; text-decoration: none;
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        html[dir="rtl"] .whatsapp-floating { left: 30px; right: auto; }
+        html[dir="ltr"] .whatsapp-floating { right: 30px; left: auto; }
+        .whatsapp-floating:hover { transform: translateY(-5px) scale(1.05); color: #FFFFFF; }
+
+        footer { text-align: center; padding: 25px 0; border-top: 1px solid rgba(201,168,124,0.15); background: #0b2532; font-size: 0.85rem; color: var(--stone-beige); }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 12px; }
+            .policy-row { grid-template-columns: 1fr; }
+            .policy-label { border-left: none; border-right: none; border-bottom: 1px solid rgba(201,168,124,0.15); }
+            .tabs-nav { flex-direction: column; align-items: center; }
+            .tab-btn { width: 100%; text-align: center; }
+            .whatsapp-floating span { display: none; }
+            .whatsapp-floating { padding: 12px; border-radius: 50%; bottom: 20px; }
+            html[dir="rtl"] .whatsapp-floating { left: 20px; }
+            html[dir="ltr"] .whatsapp-floating { right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <h1 data-key="logo-title">فندق ريان الجوار</h1>
+            <p data-key="logo-sub"><i class="fas fa-mosque"></i> مكة المكرمة - أبراج الجعفرية</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="btn-back-home" id="back-btn" data-key="nav-back"><i class="fas fa-arrow-right"></i> العودة للرئيسية</a></li>
+            <li><button class="lang-btn" id="lang-toggle-btn" onclick="toggleLanguage()">English</button></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+    <div class="container" data-aos="fade-up">
+        <h2 data-key="page-title">السياسات والخدمات والمرافق</h2>
+        <p data-key="page-sub">دليلك الكامل وشروط الإقامة المعتمدة في فندق ريان الجوار بالجميزة</p>
+    </div>
+</section>
+
+<div class="container">
+    
+    <!-- TABS NAVIGATION -->
+    <div class="tabs-nav" data-aos="fade-up">
+        <button class="tab-btn active" onclick="switchTab('overview')" data-key="tab-ov">نبذة عن الفندق</button>
+        <button class="tab-btn" onclick="switchTab('rooms')" data-key="tab-rm">أنواع الغرف والاتاحة</button>
+        <button class="tab-btn" onclick="switchTab('amenities')" data-key="tab-ame">الخدمات والمرافق</button>
+        <button class="tab-btn" onclick="switchTab('landmarks')" data-key="tab-lm">المعالم القريبة</button>
+        <button class="tab-btn" onclick="switchTab('policies')" data-key="tab-pol">سياسات وقواعد الفندق</button>
+    </div>
+
+    <!-- TAB: OVERVIEW -->
+    <div id="overview" class="tab-content active" data-aos="fade-up">
+        <div class="about-card">
+            <div class="sec-title" style="margin-top:0;">
+                <h3><i class="fas fa-star"></i> <span data-key="ov-t">إقامة اقتصادية متميزة بجوار الحرم</span></h3>
+            </div>
+            <p data-key="ov-d1">يتميز فندق ريان الجوار بموقعه الاستراتيجي في حي الجميزة الحيوية بمكة المكرمة. يُعد الفندق خياراً مثالياً واقتصادياً مميزاً لضيوف الرحمن والمعتمرين بفضل قربه من ساحات التوسعة الشمالية للمسجد الحرام وسهولة الوصول الإنسيابي للمشاعر المقدسة.</p>
+            <p data-key="ov-d2">يجمع الفندق بين السعر الاقتصادي المنافس والموقع اللوجستي المتميز بعيداً عن زحام المنطقة المركزية المباشرة مع الحفاظ على القرب الإيماني والروحاني الساحر.</p>
+            
+            <div class="info-tags">
+                <div class="info-tag">
+                    <strong data-key="ov-tag1-l">الموقع الجغرافي</strong>
+                    <span data-key="ov-tag1-v">مكة المكرمة - حي الجميزة (طريق الملك فيصل / أبراج الجعفرية)</span>
+                </div>
+                <div class="info-tag">
+                    <strong data-key="ov-tag2-l">المسافة إلى الحرم</strong>
+                    <span data-key="ov-tag2-v">حوالي 400 إلى 600 متر فقط مشياً للأقسام القريبة من التوسعة الشمالية الجديدة</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB: ROOMS -->
+    <div id="rooms" class="tab-content" data-aos="fade-up">
+        <div class="sec-title">
+            <h3><i class="fas fa-bed"></i> <span data-key="rm-sec-t">الغرف المتاحة والوحدات السكنية</span></h3>
+            <p data-key="rm-sec-d">تأتي الوحدات السكنية في الفندق بتصاميم عملية مريحة تناسب العائلات ومجموعات المعتمرين</p>
+        </div>
+        
+        <div class="rooms-grid">
+            <!-- غرف ثنائية -->
+            <div class="room-card">
+                <div class="room-desc-box">
+                    <h4 data-key="rm1-t">غرف ثنائية (Twin / Double)</h4>
+                    <p data-key="rm1-d">سريران منفردان أو سرير ماستر كبير، مثالية للأزواج أو الأفراد مع إطلالة على المدينة أو الشارع الرئيسي.</p>
+                </div>
+                <div class="room-unified-features">
+                    <h5 data-key="rm-feat-t">المرافق القياسية الموحدة:</h5>
+                    <ul class="features-list">
+                        <li><i class="fas fa-wifi"></i> <span data-key="f-wifi">إنترنت Wi-Fi</span></li>
+                        <li><i class="fas fa-snowflake"></i> <span data-key="f-ac">تكييف ممتاز</span></li>
+                        <li><i class="fas fa-tv"></i> <span data-key="f-tv">شاشة تلفزيون</span></li>
+                        <li><i class="fas fa-coffee"></i> <span data-key="f-kettle">سخان شاي وقهوة</span></li>
+                        <li><i class="fas fa-ice-cream"></i> <span data-key="f-bar">ميني بار</span></li>
+                        <li><i class="fas fa-box"></i> <span data-key="f-ref">ثلاجة مستقلة</span></li>
+                        <li><i class="fas fa-restroom"></i> <span data-key="f-bath">حمّام خاص مجهز</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- غرف ثلاثية -->
+            <div class="room-card">
+                <div class="room-desc-box">
+                    <h4 data-key="rm2-t">غرف ثلاثية (Triple Rooms)</h4>
+                    <p data-key="rm2-d">تحتوي على 3 أسرّة منفردة ومجهزة بالكامل لتوفير مساحة ممتازة ومريحة للمجموعات الثلاثية.</p>
+                </div>
+                <div class="room-unified-features">
+                    <h5 data-key="rm-feat-t">المرافق القياسية الموحدة:</h5>
+                    <ul class="features-list">
+                        <li><i class="fas fa-wifi"></i> <span data-key="f-wifi">إنترنت Wi-Fi</span></li>
+                        <li><i class="fas fa-snowflake"></i> <span data-key="f-ac">تكييف ممتاز</span></li>
+                        <li><i class="fas fa-tv"></i> <span data-key="f-tv">شاشة تلفزيون</span></li>
+                        <li><i class="fas fa-coffee"></i> <span data-key="f-kettle">سخان شاي وقهوة</span></li>
+                        <li><i class="fas fa-ice-cream"></i> <span data-key="f-bar">ميني بار</span></li>
+                        <li><i class="fas fa-box"></i> <span data-key="f-ref">ثلاجة مستقلة</span></li>
+                        <li><i class="fas fa-restroom"></i> <span data-key="f-bath">حمّام خاص مجهز</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- غرف رباعية وخماسية عائلية -->
+            <div class="room-card">
+                <div class="room-desc-box">
+                    <h4 data-key="rm3-t">غرف رباعية وخماسية عائلية</h4>
+                    <p data-key="rm3-d">خيارات مثالية وجذابة للمجموعات الكبيرة والعائلات لتوفير أكبر قدر من الراحة والخصوصية المشتركة.</p>
+                </div>
+                <div class="room-unified-features">
+                    <h5 data-key="rm-feat-t">المرافق القياسية الموحدة:</h5>
+                    <ul class="features-list">
+                        <li><i class="fas fa-wifi"></i> <span data-key="f-wifi">إنترنت Wi-Fi</span></li>
+                        <li><i class="fas fa-snowflake"></i> <span data-key="f-ac">تكييف ممتاز</span></li>
+                        <li><i class="fas fa-tv"></i> <span data-key="f-tv">شاشة تلفزيون</span></li>
+                        <li><i class="fas fa-coffee"></i> <span data-key="f-kettle">سخان شاي وقهوة</span></li>
+                        <li><i class="fas fa-ice-cream"></i> <span data-key="f-bar">ميني بار</span></li>
+                        <li><i class="fas fa-box"></i> <span data-key="f-ref">ثلاجة مستقلة</span></li>
+                        <li><i class="fas fa-restroom"></i> <span data-key="f-bath">حمّام خاص مجهز</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB: AMENITIES -->
+    <div id="amenities" class="tab-content" data-aos="fade-up">
+        <div class="sec-title">
+            <h3><i class="fas fa-concierge-bell"></i> <span data-key="ame-sec-t">الخدمات والمرافق المتكاملة بالفندق</span></h3>
+            <p data-key="ame-sec-d">بنية تحتية لوجستية متطورة تهدف لضمان أعلى مستويات الأمان والراحة واليسر للنزلاء</p>
+        </div>
+        
+        <div class="amenities-container">
+            <!-- الراحة والداخلية -->
+            <div class="amenity-card">
+                <h4><i class="fas fa-couch"></i> <span data-key="am-c1">مرافق الغرفة والراحة</span></h4>
+                <div class="amenity-grid-items">
+                    <div class="amenity-item"><i class="fas fa-wifi"></i> <span data-key="am1-i1">واي فاي مجاني فائق السرعة في الغرف والردهة</span></div>
+                    <div class="amenity-item"><i class="fas fa-snowflake"></i> <span data-key="am1-i2">تكييف هواء مركزي / سبليت ممتاز وعالي الكفاءة</span></div>
+                    <div class="amenity-item"><i class="fas fa-tv"></i> <span data-key="am1-i3">شاشات تلفزيون ذكية متصلة بقنوات فضائية</span></div>
+                    <div class="amenity-item"><i class="fas fa-sink"></i> <span data-key="am1-i4">حمامات خاصة داخلية مجهزة بكافة المستلزمات والصابون</span></div>
+                </div>
+            </div>
+
+            <!-- الخدمات العامة -->
+            <div class="amenity-card">
+                <h4><i class="fas fa-hotel"></i> <span data-key="am-c2">الخدمات العامة والاستقبال</span></h4>
+                <div class="amenity-grid-items">
+                    <div class="amenity-item"><i class="fas fa-clock"></i> <span data-key="am2-i1">مكتب استقبال احترافي يعمل على مدار 24 ساعة</span></div>
+                    <div class="amenity-item"><i class="fas fa-elevator"></i> <span data-key="am2-i2">مصاعد حديثة متطورة وعالية السرعة لخدمة كافة الأدوار</span></div>
+                    <div class="amenity-item"><i class="fas fa-bus"></i> <span data-key="am2-i3">القرب الفائق من مواقف حافلات النقل الترددي للحرم</span></div>
+                    <div class="amenity-item"><i class="fas fa-shopping-cart"></i> <span data-key="am2-i4">محيط تجاري متكامل (سوبرماركت، محلات، مطاعم)</span></div>
+                </div>
+            </div>
+
+            <!-- السلامة والأمان -->
+            <div class="amenity-card">
+                <h4><i class="fas fa-user-shield"></i> <span data-key="am-c3">وسائل السلامة والأمان</span></h4>
+                <div class="amenity-grid-items">
+                    <div class="amenity-item"><i class="fas fa-video"></i> <span data-key="am3-i1">نظام كاميرات مراقبة متكامل (CCTV) يغطي الممرات والمداخل</span></div>
+                    <div class="amenity-item"><i class="fas fa-bell"></i> <span data-key="am3-i2">أنظمة استشعار الدخان متطورة ومعتمدة من الدفاع المدني</span></div>
+                    <div class="amenity-item"><i class="fas fa-key"></i> <span data-key="am3-i3">بوابات وأنظمة دخول آمنة للمنشأة</span></div>
+                    <div class="amenity-item"><i class="fas fa-vault"></i> <span data-key="am3-i4">صندوق أمانات مركزي آمن متوفر لدى الاستقبال عند الطلب</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB: LANDMARKS -->
+    <div id="landmarks" class="tab-content" data-aos="fade-up">
+        <div class="sec-title">
+            <h3><i class="fas fa-map-marked-alt"></i> <span data-key="lm-sec-t">أقرب المعالم الإسلامية والتاريخية</span></h3>
+            <p data-key="lm-sec-d">بفضل موقع الفندق المتميز في حي الجميزة، فإنه يقع بالقرب من أهم الشواهد التاريخية في مكة</p>
+        </div>
+
+        <div class="landmarks-grid">
+            <!-- المسجد الحرام -->
+            <div class="landmark-card">
+                <div class="landmark-img-placeholder">
+                    <i class="fas fa-kaaba"></i>
+                    <span data-key="img-lbl">إتجاه ساحة الحرم الشريف</span>
+                </div>
+                <div class="landmark-content">
+                    <div>
+                        <h4 data-key="lm1-t">1. المسجد الحرام (The Holy Haram)</h4>
+                        <div class="landmark-distance"><i class="fas fa-walking"></i> <span data-key="lm1-dist">400 - 600 متر (7 - 10 دقائق مشياً)</span></div>
+                    </div>
+                    <p class="landmark-info" data-key="lm1-d">أقدس الأماكن على وجه الأرض، ويضم الكعبة المشرفة قبلة المسلمين، ومقام إبراهيم، وحجر إسماعيل، وبئر زمزم المبارك، حيث يسهل الوصول لساحات التوسعة الشمالية الجديدة.</p>
+                </div>
+            </div>
+
+            <!-- مقبرة المعلاة -->
+            <div class="landmark-card">
+                <div class="landmark-img-placeholder">
+                    <i class="fas fa-gopuram"></i>
+                    <span data-key="img-lbl2">المدخل التاريخي لمقبرة المعلاة</span>
+                </div>
+                <div class="landmark-content">
+                    <div>
+                        <h4 data-key="lm2-t">2. مقبرة المعلاة (Al Ma'ala Cemetery)</h4>
+                        <div class="landmark-distance"><i class="fas fa-walking"></i> <span data-key="lm2-dist">حوالي 700 متر فقط من الفندق</span></div>
+                    </div>
+                    <p class="landmark-info" data-key="lm2-d">من أقدم المقابر الإسلامية الأثرية في مكة المكرمة، وتضم جثامين أم المؤمنين السيدة خديجة بنت خويلد -رضي الله عنها-، وعدد كبير من الصحابة والتابعين الأجلاء.</p>
+                </div>
+            </div>
+
+            <!-- مسجد الجن -->
+            <div class="landmark-card">
+                <div class="landmark-img-placeholder">
+                    <i class="fas fa-mosque"></i>
+                    <span data-key="img-lbl3">مسجد الجن الأثري والتاريخي</span>
+                </div>
+                <div class="landmark-content">
+                    <div>
+                        <h4 data-key="lm3-t">3. مسجد الجن (Masjid Al-Jinn)</h4>
+                        <div class="landmark-distance"><i class="fas fa-walking"></i> <span data-key="lm3-dist">حوالي 950 متر (منطقة الغزة)</span></div>
+                    </div>
+                    <p class="landmark-info" data-key="lm3-d">مسجد تاريخي قديم بُني في الموقع الذي استمع فيه الجن إلى القرآن الكريم من النبي ﷺ ونزلت فيه سورة (الجن) الكريمة.</p>
+                </div>
+            </div>
+
+            <!-- مسجد الراية -->
+            <div class="landmark-card">
+                <div class="landmark-img-placeholder">
+                    <i class="fas fa-flag"></i>
+                    <span data-key="img-lbl4">موقع مسجد الراية التاريخي</span>
+                </div>
+                <div class="landmark-content">
+                    <div>
+                        <h4 data-key="lm4-t">4. مسجد الراية (Masjid Al-Rayah)</h4>
+                        <div class="landmark-distance"><i class="fas fa-walking"></i> <span data-key="lm4-dist">حوالي 1.1 كم من الفندق</span></div>
+                    </div>
+                    <p class="landmark-info" data-key="lm4-d">هو المسجد التاريخي الأثري الذي ركّز فيه النبي صلوات الله وسلامه عليه رايته يوم فتح مكة المكرمة العظيم عند دخوله للمدينة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB: POLICIES -->
+    <div id="policies" class="tab-content" data-aos="fade-up">
+        <div class="sec-title">
+            <h3><i class="fas fa-shield-alt"></i> <span data-key="pol-sec-t">شروط وقواعد الإقامة الرسمية بالفندق</span></h3>
+            <p data-key="pol-sec-d">يرجى قراءة البنود والضوابط المعتمدة لضمان مرونة تسجيلكم وإقامتكم</p>
+        </div>
+        <div class="policy-grid">
+            <div class="policy-row">
+                <div class="policy-label"><i class="fas fa-sign-in-alt"></i> <span data-key="p-label-1">تسجيل الوصول</span></div>
+                <div class="policy-value" data-key="p-val-1">اعتباراً من الساعة 4:00 عصراً (مساءً).</div>
+            </div>
+            <div class="policy-row">
+                <div class="policy-label"><i class="fas fa-sign-out-alt"></i> <span data-key="p-label-2">تسجيل المغادرة</span></div>
+                <div class="policy-value" data-key="p-val-2">حتى الساعة 12:00 ظهراً.</div>
+            </div>
+            <div class="policy-row">
+                <div class="policy-label"><i class="fas fa-paw"></i> <span data-key="p-label-3">الحيوانات الأليفة</span></div>
+                <div class="policy-value" data-key="p-val-3">غير مسموح باصطحاب الحيوانات الأليفة مطلقاً داخل مرافق الفندق والغرف.</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- SMART FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/966555650876" class="whatsapp-floating" target="_blank">
+    <i class="fab fa-whatsapp"></i> <span data-key="c-whatsapp-btn">تواصل فوري للحجز</span>
+</a>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p data-key="footer-text">© 1448 هـ - 2026 م فندق ريان الجوار - جميع الحقوق محفوظة.</p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 600, once: true });
+
+    // تفعيل التبديل بين التابات
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+        AOS.refresh();
+    }
+
+    let currentLang = 'ar';
+
+    // القاموس اللغوي الشامل والمترجم بالكامل
+    const i18n = {
+        ar: {
+            "logo-title": "فندق ريان الجوار", "logo-sub": "مكة المكرمة - أبراج الجعفرية", "nav-back": "العودة للرئيسية",
+            "page-title": "السياسات والخدمات والمرافق", "page-sub": "دليلك الكامل وشروط الإقامة المعتمدة في فندق ريان الجوار بالجميزة",
+            "tab-ov": "نبذة عن الفندق", "tab-rm": "أنواع الغرف والاتاحة", "tab-ame": "الخدمات والمرافق", "tab-lm": "المعالم القريبة", "tab-pol": "سياسات وقواعد الفندق",
+            "ov-t": "إقامة اقتصادية متميزة بجوار الحرم",
+            "ov-d1": "يتميز فندق ريان الجوار بموقعه الاستراتيجي في حي الجميزة الحيوية بمكة المكرمة. يُعد الفندق خياراً مثالياً واقتصادياً مميزاً لضيوف الرحمن والمعتمرين بفضل قربه من ساحات التوسعة الشمالية للمسجد الحرام وسهولة الوصول الإنسيابي للمشاعر المقدسة.",
+            "ov-d2": "يجمع الفندق بين السعر الاقتصادي المنافس والموقع اللوجستي المتميز بعيداً عن زحام المنطقة المركزية المباشرة مع الحفاظ على القرب الإيماني والروحاني الساحر.",
+            "ov-tag1-l": "الموقع الجغرافي", "ov-tag1-v": "مكة المكرمة - حي الجميزة (طريق الملك فيصل / أبراج الجعفرية)",
+            "ov-tag2-l": "المسافة إلى الحرم", "ov-tag2-v": "حوالي 400 إلى 600 متر فقط مشياً للأقسام القريبة من التوسعة الشمالية الجديدة",
+            "rm-sec-t": "الغرف المتاحة والوحدات السكنية", "rm-sec-d": "تأتي الوحدات السكنية في الفندق بتصاميم عملية مريحة تناسب العائلات ومجموعات المعتمرين",
+            "rm1-t": "غرف ثنائية (Twin / Double)", "rm1-d": "سريران منفردان أو سرير ماستر كبير، مثالية للأزواج أو الأفراد مع إطلالة على المدينة أو الشارع الرئيسي.",
+            "rm2-t": "غرف ثلاثية (Triple Rooms)", "rm2-d": "تحتوي على 3 أسرّة منفردة ومجهزة بالكامل لتوفير مساحة ممتازة ومريحة للمجموعات الثلاثية.",
+            "rm3-t": "غرف رباعية وخماسية عائلية", "rm3-d": "خيارات مثالية وجذابة للمجموعات الكبيرة والعائلات لتوفير أكبر قدر من الراحة والخصوصية المشتركة.",
+            "rm-feat-t": "المرافق القياسية الموحدة:",
+            "f-wifi": "إنترنت Wi-Fi", "f-ac": "تكييف ممتاز", "f-tv": "شاشة تلفزيون", "f-kettle": "سخان شاي وقهوة", "f-bar": "ميني بار", "f-ref": "ثلاجة مستقلة", "f-bath": "حمّام خاص مجهز",
+            "ame-sec-t": "الخدمات والمرافق المتكاملة بالفندق", "ame-sec-d": "بنية تحتية لوجستية متطورة تهدف لضمان أعلى مستويات الأمان والراحة واليسر للنزلاء",
+            "am-c1": "مرافق الغرفة والراحة", "am-c2": "الخدمات العامة والاستقبال", "am-c3": "وسائل السلامة والأمان",
+            "am1-i1": "واي فاي مجاني فائق السرعة في الغرف والردهة", "am1-i2": "تكييف هواء مركزي / سبليت ممتاز وعالي الكفاءة", "am1-i3": "شاشات تلفزيون ذكية متصلة بقنوات فضائية", "am1-i4": "حمامات خاصة داخلية مجهزة بكافة المستلزمات والصابون",
+            "am2-i1": "مكتب استقبال احترافي يعمل على مدار 24 ساعة", "am2-i2": "مصاعد حديثة متطورة وعالية السرعة لخدمة كافة الأدوار", "am2-i3": "القرب الفائق من مواقف حافلات النقل الترددي للحرم", "am2-i4": "محيط تجاري متكامل (سوبرماركت، محلات، مطاعم)",
+            "am3-i1": "نظام كاميرات مراقبة متكامل (CCTV) يغطي الممرات والمدخل", "am3-i2": "أنظمة استشعار الدخان متطورة ومعتمدة من الدفاع المدني", "am3-i3": "بوابات وأنظمة دخول آمنة للمنشأة", "am3-i4": "صندوق أمانات مركزي آمن متوفر لدى الاستقبال عند الطلب",
+            "lm-sec-t": "أقرب المعالم الإسلامية والتاريخية", "lm-sec-d": "بفضل موقع الفندق المتميز في حي الجميزة، فإنه يقع بالقرب من أهم الشواهد التاريخية في مكة",
+            "img-lbl": "إتجاه ساحة الحرم الشريف", "img-lbl2": "المدخل التاريخي لمقبرة المعلاة", "img-lbl3": "مسجد الجن الأثري والتاريخي", "img-lbl4": "موقع مسجد الراية التاريخي",
+            "lm1-t": "1. المسجد الحرام (The Holy Haram)", "lm1-dist": "400 - 600 متر (7 - 10 دقائق مشياً)", "lm1-d": "أقدس الأماكن على وجه الأرض، ويضم الكعبة المشرفة قبلة المسلمين، ومقام إبراهيم، وحجر إسماعيل، وبئر زمزم المبارك، حيث يسهل الوصول لساحات التوسعة الشمالية الجديدة.",
+            "lm2-t": "2. مقبرة المعلاة (Al Ma'ala Cemetery)", "lm2-dist": "حوالي 700 متر فقط من الفندق", "lm2-d": "من أقدم المقابر الإسلامية الأثرية في مكة المكرمة، وتضم جثامين أم المؤمنين السيدة خديجة بنت خويلد -رضي الله عنها-، وعدد كبير من الصحابة والتابعين الأجلاء.",
+            "lm3-t": "3. مسجد الجن (Masjid Al-Jinn)", "lm3-dist": "حوالي 950 متر (منطقة الغزة)", "lm3-d": "مسجد تاريخي قديم بُني في الموقع الذي استمع فيه الجن إلى القرآن الكريم من النبي ﷺ ونزلت فيه سورة (الجن) الكريمة.",
+            "lm4-t": "4. مسجد الراية (Masjid Al-Rayah)", "lm4-dist": "حوالي 1.1 كم من الفندق", "lm4-d": "هو المسجد التاريخي الأثري الذي ركّز فيه النبي صلوات الله وسلامه عليه رايته يوم فتح مكة المكرمة العظيم عند دخوله للمدينة.",
+            "pol-sec-t": "شروط وقواعد الإقامة الرسمية بالفندق", "pol-sec-d": "يرجى قراءة البنود والضوابط المعتمدة لضمان مرونة تسجيلكم وإقامتكم",
+            "p-label-1": "تسجيل الوصول", "p-val-1": "اعتباراً من الساعة 4:00 عصراً (مساءً).",
+            "p-label-2": "تسجيل المغادرة", "p-val-2": "حتى الساعة 12:00 ظهراً.",
+            "p-label-3": "الحيوانات الأليفة", "p-val-3": "غير مسموح باصطحاب الحيوانات الأليفة مطلقاً داخل مرافق الفندق والغرف.",
+            "c-whatsapp-btn": "تواصل فوري للحجز", "footer-text": "© 1448 هـ - 2026 م فندق ريان الجوار - جميع الحقوق محفوظة."
+        },
+        en: {
+            "logo-title": "Al Rayyan Al Jiwar Hotel", "logo-sub": "Makkah - Al Jaafariyah Towers", "nav-back": "Back to Home",
+            "page-title": "Policies, Services & Amenities", "page-sub": "Your complete guide and approved stay conditions at Rayan Al Jiwar Hotel in Al-Jummayzah",
+            "tab-ov": "Overview", "tab-rm": "Rooms & Availability", "tab-ame": "Services & Facilities", "tab-lm": "Nearby Landmarks", "tab-pol": "Hotel Policy Rules",
+            "ov-t": "Distinguished Economic Stay Near the Haram",
+            "ov-d1": "Al Rayyan Al Jiwar Hotel is strategically located in the lively Al-Jummayzah district in Makkah. The hotel is an ideal and premium economical choice for pilgrims and Umrah performers thanks to its close proximity to the new northern expansion courtyards of the Holy Masjid Al-Haram and smooth access to the holy sites.",
+            "ov-d2": "The hotel combines a competitive budget-friendly price with a prime logistical location away from the extreme crowds of the direct central zone while fully preserving the spiritual proximity.",
+            "ov-tag1-l": "Geographical Location", "ov-tag1-v": "Makkah - Al-Jummayzah District (King Faisal Road / Al Jaafariyah Towers)",
+            "ov-tag2-l": "Distance to Haram", "ov-tag2-v": "Only about 400 to 600 meters walking to the nearby sections of the new Northern Expansion",
+            "rm-sec-t": "Available Rooms & Residential Units", "rm-sec-d": "Residential units come in practical, comfortable designs suitable for families and Umrah groups",
+            "rm1-t": "Twin / Double Rooms", "rm1-d": "Two single beds or a large master bed, perfect for couples or individuals with city or main street views.",
+            "rm2-t": "Triple Rooms", "rm2-d": "Contains 3 single beds fully equipped to provide excellent space and comfort for triple groups.",
+            "rm3-t": "Quadruple & Family Rooms", "rm3-d": "Ideal choices for large groups and families to provide maximum comfort and shared privacy.",
+            "rm-feat-t": "Unified Standard Amenities:",
+            "f-wifi": "Wi-Fi Internet", "f-ac": "Excellent A/C", "f-tv": "TV Screen", "f-kettle": "Tea/Coffee Kettle", "f-bar": "Minibar", "f-ref": "Independent Fridge", "f-bath": "Equipped Private Bathroom",
+            "ame-sec-t": "Integrated Hotel Services & Facilities", "ame-sec-d": "Advanced logistical infrastructure designed to ensure the highest levels of safety, comfort, and convenience",
+            "am-c1": "Room Facilities & Comfort", "am-c2": "General & Reception Services", "am-c3": "Safety & Security Devices",
+            "am1-i1": "Free high-speed Wi-Fi in rooms and the lobby", "am1-i2": "Central / Split excellent A/C with high cooling capacity", "am1-i3": "Smart TV screens connected to satellite channels", "am1-i4": "Ensuite private bathrooms fully equipped with toiletries",
+            "am2-i1": "24-hour professional front desk service", "am2-i2": "Advanced high-speed modern elevators serving all floors", "am2-i3": "Extremely close to shuttle bus stations for easy Haram transit", "am2-i4": "Integrated commercial surrounding (supermarket, shops, restaurants)",
+            "am3-i1": "Comprehensive CCTV camera security system for corridors & entrance", "am3-i2": "Smoke detector alert systems certified by Civil Defense", "am3-i3": "Highly secured access gates for the building", "am3-i4": "Central safety deposit box available upon request at reception",
+            "lm-sec-t": "Closest Islamic & Historical Landmarks", "lm-sec-d": "Thanks to the hotel's prominent location in Al-Jummayzah, it is located near the most crucial historical sites",
+            "img-lbl": "Holy Haram Courtyard View", "img-lbl2": "Historical Entrance of Al Ma'ala", "img-lbl3": "Masjid Al-Jinn Archaeological Site", "img-lbl4": "Masjid Al-Rayah Historical Location",
+            "lm1-t": "1. The Holy Haram (Masjid Al-Haram)", "lm1-dist": "400 - 600 meters (7 - 10 minutes walking)", "lm1-d": "The holiest place on Earth, containing the Holy Kaaba, Maqam Ibrahim, Hijr Ismail, and the Zamzam well, with seamless access to the new Northern Expansion.",
+            "lm2-t": "2. Al Ma'ala Cemetery", "lm2-dist": "About 700 meters only from the hotel", "lm2-d": "One of the oldest ancient Islamic cemeteries in Makkah, holding the tombs of Mother of the Believers Sayyidah Khadijah bint Khuwaylid (RA) and numerous noble companions.",
+            "lm3-t": "3. Masjid Al-Jinn (Mosque of the Jinn)", "lm3-dist": "About 950 meters (Near Al-Ghaza & Al-Ma'ala)", "lm3-d": "A highly historical ancient mosque built on the site where the Jinn listened to the Holy Quran recited by the Prophet ﷺ and Surah Al-Jinn was revealed.",
+            "lm4-t": "4. Masjid Al-Rayah (Mosque of the Flag)", "lm4-dist": "About 1.1 km from the hotel", "lm4-d": "The historical mosque marking the exact spot where the Prophet ﷺ pitched his flag on the day of the Conquest of Makkah upon entering the city.",
+            "pol-sec-t": "Official Hotel Policy Rules & Regulations", "pol-sec-d": "Please read the approved rules to guarantee flexibility during your check-in and stay",
+            "p-label-1": "Check-in", "p-val-1": "Starting from 4:00 PM.",
+            "p-label-2": "Check-out", "p-val-2": "Until 12:00 PM (Noon).",
+            "p-label-3": "Pets", "p-val-3": "Pets are strictly not allowed inside the hotel rooms or facilities.",
+            "c-whatsapp-btn": "Instant Booking Contact", "footer-text": "© 1448 AH - 2026 AM Rayan Al Jiwar Hotel - All Rights Reserved."
+        }
+    };
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+        
+        if (currentLang === 'en') {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            document.getElementById('lang-toggle-btn').innerText = 'العربية';
+            document.getElementById('back-btn').innerHTML = 'Back to Home <i class="fas fa-arrow-left"></i>';
+        } else {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            document.getElementById('lang-toggle-btn').innerText = 'English';
+            document.getElementById('back-btn').innerHTML = '<i class="fas fa-arrow-right"></i> العودة للرئيسية';
+        }
+
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (i18n[currentLang][key]) {
+                const icon = element.querySelector('i');
+                if (icon) {
+                    element.innerHTML = '';
+                    element.appendChild(icon);
+                    element.innerHTML += ' ' + i18n[currentLang][key];
+                } else {
+                    element.innerText = i18n[currentLang][key];
+                }
+            }
+        });
+
+        AOS.refresh();
+    }
+</script>
+</body>
+</html>

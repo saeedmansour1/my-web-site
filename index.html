@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فندق ريان الجوار | Al Rayyan Al Jiwar Hotel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Tajawal:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --petrol-dark: #0f3243;
+            --petrol-mid: #133F54;
+            --petrol-card: #1c4f67;
+            --islamic-gold: #C9A87C;
+            --stone-beige: #D7CCBC;
+            --white: #FFFFFF;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            font-family: 'Tajawal', 'Montserrat', sans-serif;
+            background-color: var(--petrol-dark);
+            color: #F5F2EB;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: rgba(15, 50, 67, 0.9);
+            backdrop-filter: blur(15px);
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 1000; padding: 15px 0;
+            border-bottom: 1px solid rgba(201, 168, 124, 0.15);
+        }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .logo h1 { font-size: 1.6rem; font-weight: 900; color: var(--islamic-gold); }
+        .logo p { font-size: 0.75rem; color: var(--stone-beige); }
+        .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+        .btn-nav-policy { background: var(--islamic-gold); color: var(--petrol-dark); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold; transition: var(--transition); }
+        .btn-nav-policy:hover { background: var(--white); color: var(--petrol-dark); transform: translateY(-2px); }
+        .lang-btn { background: rgba(201, 168, 124, 0.15); border: 1px solid var(--islamic-gold); color: var(--islamic-gold); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(180deg, rgba(15, 50, 67, 0.5) 0%, rgba(15, 50, 67, 0.95) 100%), 
+                        url('in.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0 60px;
+        }
+        .hero-content h2 { font-size: 3.5rem; font-weight: 900; color: var(--white); margin-bottom: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .hero-content p { color: var(--stone-beige); font-size: 1.3rem; max-width: 800px; margin: 0 auto 30px; line-height: 1.6; }
+        .hero-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+        .btn-gold { background: var(--islamic-gold); color: var(--petrol-dark); padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: var(--transition); display: flex; align-items: center; gap: 8px; border: none; cursor: pointer;}
+        .btn-gold:hover { background: var(--white); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .btn-outline { background: transparent; border: 2px solid var(--white); color: var(--white); padding: 12px 26px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1rem; transition: var(--transition); }
+        .btn-outline:hover { background: var(--white); color: var(--petrol-dark); transform: translateY(-3px); }
+
+        /* --- LUXURY BOOKING SEARCH BAR --- */
+        .search-engine-wrapper { width: 100%; max-width: 1150px; padding: 0 20px; margin-top: 20px; }
+        .search-engine-box { background: rgba(19, 63, 84, 0.85); backdrop-filter: blur(20px); border: 1.5px solid var(--islamic-gold); border-radius: 20px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); text-align: left; direction: ltr; }
+        .search-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.2fr; gap: 15px; align-items: flex-end; }
+        .search-field { display: flex; flex-direction: column; gap: 8px; }
+        .search-field label { color: var(--stone-beige); font-size: 0.8rem; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .search-field input, .search-field select { background: rgba(15, 50, 67, 0.8); border: 1px solid rgba(201, 168, 124, 0.4); border-radius: 10px; padding: 12px 14px; color: var(--white); font-family: 'Montserrat', sans-serif; font-size: 0.9rem; outline: none; transition: var(--transition); width: 100%; }
+        .search-field input:focus, .search-field select:focus { border-color: var(--islamic-gold); box-shadow: 0 0 10px rgba(201, 168, 124, 0.3); }
+        .search-field input::placeholder { color: rgba(215, 204, 188, 0.5); font-size: 0.75rem; }
+        .btn-search-trigger { background: var(--islamic-gold); color: var(--petrol-dark); border: none; padding: 14px; border-radius: 10px; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1rem; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; }
+        .btn-search-trigger:hover { background: var(--white); transform: scale(1.02); }
+
+        /* --- SECTION GENERIC --- */
+        .section-padding { padding: 90px 0; }
+        .sec-title { text-align: center; margin-bottom: 50px; }
+        .sec-title h3 { font-size: 2.3rem; font-weight: 800; color: var(--islamic-gold); margin-bottom: 12px; position: relative; display: inline-block; padding-bottom: 15px; }
+        .sec-title h3::after { content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 2px; background: var(--islamic-gold); }
+        .sec-title p { color: var(--stone-beige); font-size: 1.05rem; margin-top: 10px; }
+
+        /* --- LUXURY ROOMS SHOWCASE --- */
+        .rooms-showcase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .luxury-room-card { background: var(--petrol-card); border-radius: 20px; overflow: hidden; border: 1px solid rgba(201,168,124,0.1); transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .luxury-room-card:hover { transform: translateY(-10px); border-color: var(--islamic-gold); box-shadow: 0 15px 40px rgba(201,168,124,0.15); }
+        .room-img-box { height: 260px; overflow: hidden; position: relative; }
+        .room-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .luxury-room-card:hover .room-img-box img { transform: scale(1.1); }
+        .room-tag { position: absolute; top: 15px; left: 15px; background: rgba(15, 50, 67, 0.85); color: var(--islamic-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid var(--islamic-gold); z-index: 2; }
+        html[dir="ltr"] .room-tag { left: auto; right: 15px; }
+        .room-details { padding: 25px; }
+        .room-details h4 { font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
+        .room-details p { font-size: 0.95rem; color: var(--stone-beige); line-height: 1.6; margin-bottom: 20px; }
+        .room-mini-feats { display: flex; gap: 12px; flex-wrap: wrap; list-style: none; border-top: 1px solid rgba(201,168,124,0.15); padding-top: 15px; }
+        .room-mini-feats li { font-size: 0.8rem; color: #E0DBCE; background: rgba(0,0,0,0.15); padding: 4px 10px; border-radius: 4px; display: flex; align-items: center; gap: 5px; }
+        .room-mini-feats li i { color: var(--islamic-gold); }
+
+        /* --- GALLERY ALBUM (SWIPER) --- */
+        .gallery-section { background: var(--petrol-mid); border-top: 1px solid rgba(201,168,124,0.1); border-bottom: 1px solid rgba(201,168,124,0.1); }
+        .swiper-container { width: 100%; padding-top: 20px; padding-bottom: 50px; }
+        .swiper-slide { background-position: center; background-size: cover; width: 320px; height: 410px; border-radius: 16px; overflow: hidden; border: 2px solid rgba(201,168,124,0.2); transition: var(--transition); position: relative; }
+        .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .swiper-slide-active { border-color: var(--islamic-gold); box-shadow: 0 0 30px rgba(201,168,124,0.3); }
+        .swiper-pagination-bullet-active { background: var(--islamic-gold) !important; }
+
+        /* --- LUXURY AMENITIES --- */
+        .amenities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .amenity-card { background: rgba(28, 79, 103, 0.4); border: 1px solid rgba(201,168,124,0.1); border-radius: 15px; padding: 35px 25px; text-align: center; transition: var(--transition); }
+        .amenity-card:hover { background: var(--petrol-card); border-color: var(--islamic-gold); transform: translateY(-5px); }
+        .amenity-card i { font-size: 2.5rem; color: var(--islamic-gold); margin-bottom: 20px; }
+        .amenity-card h4 { font-size: 1.25rem; color: var(--white); margin-bottom: 10px; }
+        .amenity-card p { font-size: 0.9rem; color: var(--stone-beige); line-height: 1.5; }
+
+        /* --- MAP & LOCATION SECTION --- */
+        .location-section { background: var(--petrol-mid); }
+        .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .map-wrapper { height: 350px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(201,168,124,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .map-wrapper iframe { width: 100%; height: 100%; border: none; filter: grayscale(0.2) contrast(1.1); }
+        .location-info h4 { font-size: 1.8rem; color: var(--white); margin-bottom: 15px; }
+        .location-info p { color: var(--stone-beige); font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px; }
+        .location-info ul { list-style: none; margin-bottom: 30px; }
+        .location-info ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .location-info ul li i { color: var(--islamic-gold); width: 20px; }
+
+        /* --- TESTIMONIALS (REVIEWS) --- */
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .review-card { background: var(--petrol-dark); border: 1px solid rgba(201,168,124,0.1); padding: 30px; border-radius: 15px; position: relative; }
+        .review-card::before { content: '“'; position: absolute; top: 10px; right: 20px; font-size: 4rem; color: rgba(201,168,124,0.1); font-family: serif; }
+        html[dir="rtl"] .review-card::before { right: auto; left: 20px; }
+        .stars { color: var(--islamic-gold); margin-bottom: 15px; font-size: 0.9rem; }
+        .review-card p { font-size: 0.95rem; color: var(--stone-beige); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
+        .reviewer-info { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(201,168,124,0.1); padding-top: 15px; }
+        .reviewer-avatar { width: 45px; height: 45px; background: var(--petrol-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--islamic-gold); color: var(--islamic-gold); font-weight: bold; }
+        .reviewer-details h5 { color: var(--white); font-size: 1rem; }
+        .reviewer-details span { color: rgba(215,204,188,0.6); font-size: 0.8rem; }
+
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-floating { position: fixed; bottom: 30px; z-index: 9999; background: #25D366; color: #FFFFFF; padding: 12px 22px; border-radius: 50px; font-size: 1rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4); transition: var(--transition); }
+        html[dir="rtl"] .whatsapp-floating { left: 30px; right: auto; }
+        html[dir="ltr"] .whatsapp-floating { right: 30px; left: auto; }
+        .whatsapp-floating:hover { transform: translateY(-5px) scale(1.05); color: #FFFFFF; }
+
+        /* --- FOOTER GRAND LUXE --- */
+        .premium-footer { background: #071b25; border-top: 2px solid var(--islamic-gold); padding: 70px 0 20px; color: var(--stone-beige); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .footer-about h4 { font-size: 1.5rem; color: var(--islamic-gold); margin-bottom: 15px; font-weight: 900; }
+        .footer-about p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+        .footer-links h4, .footer-contact h4 { font-size: 1.2rem; color: var(--white); margin-bottom: 20px; font-weight: 700; position: relative; padding-bottom: 8px; }
+        .footer-links h4::after, .footer-contact h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--islamic-gold); }
+        html[dir="rtl"] .footer-links h4::after, html[dir="rtl"] .footer-contact h4::after { left: auto; right: 0; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: var(--stone-beige); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
+        .footer-links ul li a:hover { color: var(--islamic-gold); padding-inline-start: 5px; }
+        .footer-contact ul { list-style: none; }
+        .footer-contact ul li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; }
+        .footer-contact ul li i { color: var(--islamic-gold); margin-top: 3px; }
+        .footer-bottom { border-top: 1px solid rgba(201,168,124,0.1); padding-top: 25px; text-align: center; font-size: 0.85rem; color: rgba(215,204,188,0.5); }
+
+        @media (max-width: 992px) {
+            .search-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+            .location-grid, .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 12px; text-align: center; }
+            .hero-content h2 { font-size: 2.3rem; }
+            .hero-content p { font-size: 1rem; }
+            .search-grid { grid-template-columns: 1fr; }
+            /* تعديل قياسات ألبوم الصور على الموبايل ليصبح متناسقاً وملائماً */
+            .swiper-slide { width: 260px; height: 340px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <h1 data-key="logo-title">فندق ريان الجوار</h1>
+            <p data-key="logo-sub"><i class="fas fa-mosque"></i> مكة المكرمة - أبراج الجعفرية</p>
+        </div>
+        <ul class="nav-links">
+            <li><a href="policies.html" class="btn-nav-policy" data-key="nav-policy">الخدمات والسياسات</a></li>
+            <li><button class="lang-btn" id="lang-toggle-btn" onclick="toggleLanguage()">English</button></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container hero-content" data-aos="zoom-in">
+        <h2 data-key="hero-title">أهلاً بكم في فندق ريان الجوار</h2>
+        <p data-key="hero-sub">بوابتكم لإقامة إيمانية مريحة واقتصادية في قلب مكة المكرمة بحي الجميزة، على بُعد دقائق معدودة مشياً من ساحات التوسعة الشمالية للمسجد الحرام الشريف.</p>
+        <div class="hero-btns">
+            <a href="https://wa.me/966555650876" class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> <span data-key="btn-book">احجز إقامتك الآن</span></a>
+            <a href="#amenities-sec" class="btn-outline" data-key="btn-more">اكتشف المرافق</a>
+        </div>
+    </div>
+
+    <div class="search-engine-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="search-engine-box">
+            <div class="search-grid">
+                <div class="search-field">
+                    <label>Keyword</label>
+                    <input type="text" id="hotel-keyword" placeholder="Begin typing property name or keyword to search..." value="Al Rayyan Al Jiwar Hotel">
+                </div>
+                <div class="search-field">
+                    <label>Check-in</label>
+                    <input type="date" id="check-in-date">
+                </div>
+                <div class="search-field">
+                    <label>Check-out</label>
+                    <input type="date" id="check-out-date">
+                </div>
+                <div class="search-field">
+                    <label>Adults</label>
+                    <select id="adults-count">
+                        <option value="1 adult">1 adult</option>
+                        <option value="2 adults" selected>2 adults</option>
+                        <option value="3 adults">3 adults</option>
+                        <option value="4 adults">4 adults</option>
+                        <option value="5 adults">5 adults</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Rooms</label>
+                    <select id="rooms-count">
+                        <option value="1 room" selected>1 room</option>
+                        <option value="2 rooms">2 rooms</option>
+                        <option value="3 rooms">3 rooms</option>
+                        <option value="4 rooms">4 rooms</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <button class="btn-search-trigger" onclick="sendBookingToWhatsapp()">
+                        <i class="fas fa-search"></i> SEARCH
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <div class="sec-title" data-aos="fade-up">
+            <h3 data-key="rm-title">أجنحة وغرف مجهزة بالكامل</h3>
+            <p data-key="rm-sub">نوفر لك وحدات سكنية متكاملة الخدمات تم توحيدها لتلبي أعلى تطلعات الراحة</p>
+        </div>
+
+        <div class="rooms-showcase-grid">
+            <div class="luxury-room-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="room-img-box">
+                    <span class="room-tag" data-key="tag-eco">اقتصادي مميز</span>
+                    <img src="2.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Twin Room">
+                </div>
+                <div class="room-details">
+                    <h4 data-key="r1-t">غرف ثنائية (Twin / Double)</h4>
+                    <p data-key="r1-d">تضم سريرين منفردين أو سرير ماستر كبير بتصميم عملي مريح مع إطلالات مميزة على المدينة أو الشارع الرئيسي.</p>
+                    <ul class="room-mini-feats">
+                        <li><i class="fas fa-snowflake"></i> <span data-key="f-ac">تكييف</span></li>
+                        <li><i class="fas fa-wifi"></i> <span data-key="f-wifi">واي فاي</span></li>
+                        <li><i class="fas fa-tv"></i> <span data-key="f-tv">شاشة TV</span></li>
+                        <li><i class="fas fa-coffee"></i> <span data-key="f-kettle">غلاية شاي</span></li>
+                        <li><i class="fas fa-box"></i> <span data-key="f-ref">ثلاجة وميني بار</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="luxury-room-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="room-img-box">
+                    <span class="room-tag" data-key="tag-group">مثالي للمجموعات</span>
+                    <img src="3.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Triple Room">
+                </div>
+                <div class="room-details">
+                    <h4 data-key="r2-t">غرف ثلاثية (Triple Rooms)</h4>
+                    <p data-key="r2-d">مساحة رحبة ومجهزة بالكامل بـ 3 أسرّة منفردة لتضمن الراحة والمرونة التامة لرفاق العمرة والرحلات الجماعية.</p>
+                    <ul class="room-mini-feats">
+                        <li><i class="fas fa-snowflake"></i> <span data-key="f-ac">تكييف</span></li>
+                        <li><i class="fas fa-wifi"></i> <span data-key="f-wifi">واي فاي</span></li>
+                        <li><i class="fas fa-tv"></i> <span data-key="f-tv">شاشة TV</span></li>
+                        <li><i class="fas fa-coffee"></i> <span data-key="f-kettle">غلاية شاي</span></li>
+                        <li><i class="fas fa-box"></i> <span data-key="f-ref">ثلاجة وميني بار</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="luxury-room-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="room-img-box">
+                    <span class="room-tag" data-key="tag-fam">خصوصية عائلية</span>
+                    <img src="4.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Family Room">
+                </div>
+                <div class="room-details">
+                    <h4 data-key="r3-t">غرف رباعية وخماسية عائلية</h4>
+                    <p data-key="r3-d">أفضل خيار يجمع شمل العائلة في غرف واسعة تضمن الخصوصية الكاملة وتوفير النفقات لضيوف الرحمن.</p>
+                    <ul class="room-mini-feats">
+                        <li><i class="fas fa-snowflake"></i> <span data-key="f-ac">تكييف</span></li>
+                        <li><i class="fas fa-wifi"></i> <span data-key="f-wifi">واي فاي</span></li>
+                        <li><i class="fas fa-tv"></i> <span data-key="f-tv">شاشة TV</span></li>
+                        <li><i class="fas fa-coffee"></i> <span data-key="f-kettle">غلاية شاي</span></li>
+                        <li><i class="fas fa-box"></i> <span data-key="f-ref">ثلاجة وميني بار</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding gallery-section">
+    <div class="container">
+        <div class="sec-title" data-aos="fade-up">
+            <h3 data-key="gal-title">ألبوم الصور الاحترافي</h3>
+            <p data-key="gal-sub">تصفح أروقة الفندق ومرافقه المصممة بعناية لخدمتكم</p>
+        </div>
+
+        <div class="swiper-container" data-aos="fade-up">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="834390425.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390573.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390582.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390596.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390605.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390613.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390625.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390641.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390646.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390649.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390651.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390653.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390656.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390663.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390665.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390668.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390671.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390674.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390683.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="834390686.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="879920189.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="879947654.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375664.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375693.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375736.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375745.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375859.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375927.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375953.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883375992.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883376066.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883376410.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883376461.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883376513.jpg" alt="Hotel View"></div>
+                <div class="swiper-slide"><img src="883376581.jpg" alt="Hotel View"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<section id="amenities-sec" class="section-padding">
+    <div class="container">
+        <div class="sec-title" data-aos="fade-up">
+            <h3 data-key="am-title">خدمات فندقية راقية</h3>
+            <p data-key="am-sub">نهتم بأدق التفاصيل لتوفير تجربة إقامة متكاملة ومريحة طوال فترة زيارتك</p>
+        </div>
+        <div class="amenities-grid">
+            <div class="amenity-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-concierge-bell"></i>
+                <h4 data-key="am-c1-t">استقبال على مدار الساعة</h4>
+                <p data-key="am-c1-d">فريق محترف ومستعد لخدمتكم وتسهيل إجراءات الدخول والخروج بكل مرونة.</p>
+            </div>
+            <div class="amenity-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-broom"></i>
+                <h4 data-key="am-c2-t">خدمة الغرف والنظافة</h4>
+                <p data-key="am-c2-d">عناية دورية يومية وتغيير مستمر للبياضات لضمان أعلى مستويات النظافة والتعقيم.</p>
+            </div>
+            <div class="amenity-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-elevator"></i>
+                <h4 data-key="am-c3-t">مصاعد حديثة وسريعة</h4>
+                <p data-key="am-c3-d">أنظمة مصاعد متطورة تلبي حركة النزلاء في أوقات الصلوات بكل انسيابية.</p>
+            </div>
+            <div class="amenity-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-tshirt"></i>
+                <h4 data-key="am-c4-t">غسيل وكي الملابس</h4>
+                <p data-key="am-c4-d">خدمات لوجستية سريعة لغسيل وكي ملابس الإحرام والملابس الشخصية للنزلاء.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding location-section">
+    <div class="container">
+        <div class="location-grid">
+            <div class="location-info" data-aos="fade-right">
+                <h4 data-key="loc-t">موقعنا الاستراتيجي</h4>
+                <p data-key="loc-d">يقع فندق ريان الجوار في حي الجميزة العريق داخل مكة المكرمة بموقع مثالي يتيح لضيوف الرحمن سرعة الوصول إلى المسجد الحرام.</p>
+                <ul>
+                    <li data-key="l-p1"><i class="fas fa-map-marker-alt"></i> مكة المكرمة - حي الجميزة - أبراج الجعفرية.</li>
+                    <li data-key="l-p2"><i class="fas fa-walking"></i> دقائق معدودة مشياً إلى ساحات الحرم الشمالية الجديدة.</li>
+                    <li data-key="l-p3"><i class="fas fa-road"></i> سهولة خروج ودخول الحافلات وسيارات الأجرة للموقع.</li>
+                </ul>
+                <a href="https://maps.app.goo.gl/o8qhWetDZiajXJXY9" target="_blank" class="btn-gold">
+                    <i class="fas fa-map-marked-alt"></i> <span data-key="btn-map">افتح في خرائط Google</span>
+                </a>
+            </div>
+            <div class="map-wrapper" data-aos="fade-left">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3711.0264024467006!2d39.8339832!3d21.4380689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c20375a2f58e4b%3A0xe67caef7116b490d!2z2YHZhti_2YIg2LHZYrNin2YYg2KfZhNis2YjYp9ix!5e0!3m2!1sar!2ssa!4v1710000000000!5m2!1sar!2ssa" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-padding">
+    <div class="container">
+        <div class="sec-title" data-aos="fade-up">
+            <h3 data-key="rev-title">آراء ضيوف الرحمن</h3>
+            <p data-key="rev-sub">نعتز بثقة نزلاء الفندق ويسعدنا دائماً تقديم الأفضل لهم</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card" data-aos="fade-up">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p data-key="rev1-txt">"الفندق نظيف جداً والمعاملة راقية من موظفي الاستقبال، والمشي للحرم سهل ومباشر عبر الساحات الجديدة. خيار اقتصادي وممتاز للعائلات."</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">A</div>
+                    <div class="reviewer-details"><h5>أحمد العتيبي</h5><span data-key="rev-guest">نزيل محلي</span></div>
+                </div>
+            </div>
+            <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p data-key="rev2-txt">"أقمنا في الغرفة الثلاثية وكانت مريحة والخدمات متكاملة والمكيف ممتاز. نشكر إدارة الفندق على حسن الضيافة والالتزام بالمعايير."</p>
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">M</div>
+                    <div class="reviewer-details"><h5>محمد إدريس</h5><span data-key="rev-umrah">معتمر</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/966555650876" class="whatsapp-floating" target="_blank">
+    <i class="fab fa-whatsapp"></i> <span data-key="whatsapp-txt">احجز معنا مباشرة</span>
+</a>
+
+<footer class="premium-footer">
+    <div class="container footer-grid">
+        <div class="footer-about">
+            <h4 data-key="f-ab-t">فندق ريان الجوار</h4>
+            <p data-key="f-ab-d">وجهتكم المثالية في مكة المكرمة لإقامة تجمع بين الاقتصاد، الراحة، والخدمة الموحدة المتميزة. نتشرف بخدمة الحجاج والمعتمرين طوال العام بأعلى معايير الأمان والسلامة المهنية.</p>
+            <div class="hero-btns" style="justify-content: flex-start; gap: 10px;">
+                <a href="https://wa.me/966555650876" style="color:var(--islamic-gold); font-size:1.3rem;" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://maps.app.goo.gl/o8qhWetDZiajXJXY9" style="color:var(--islamic-gold); font-size:1.3rem;" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+            </div>
+        </div>
+        <div class="footer-links">
+            <h4 data-key="f-ln-t">روابط سريعة</h4>
+            <ul>
+                <li><a href="#" data-key="f-l1">الرئيسية</a></li>
+                <li><a href="#amenities-sec" data-key="f-l2">الخدمات والمرافق</a></li>
+                <li><a href="policies.html" data-key="f-l3">سياسات الفندق الموحدة</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4 data-key="f-ct-t">تواصل معنا</h4>
+            <ul>
+                <li><i class="fas fa-phone"></i> <span>+966 55 565 0876</span></li>
+                <li><i class="fas fa-envelope"></i> <span>info@alrayyanhotel.com</span></li>
+                <li><i class="fas fa-mosque"></i> <span data-key="f-c3">مكة المكرمة - الجميزة - أبراج الجعفرية</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p data-key="footer-text">© 1448 هـ - 2026 م فندق ريان الجوار - جميع الحقوق محفوظة.</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+
+    // Set today and tomorrow default dates in search bar
+    const today = new Date().toISOString().split('T')[0];
+    const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+    document.getElementById('check-in-date').value = today;
+    document.getElementById('check-out-date').value = tomorrow;
+
+    // Whatsapp Redirection Logic
+    function sendBookingToWhatsapp() {
+        const hotel = document.getElementById('hotel-keyword').value;
+        const checkIn = document.getElementById('check-in-date').value;
+        const checkOut = document.getElementById('check-out-date').value;
+        const adults = document.getElementById('adults-count').value;
+        const rooms = document.getElementById('rooms-count').value;
+
+        if(!checkIn || !checkOut) {
+            alert(currentLang === 'ar' ? 'الرجاء اختيار التواريخ أولاً' : 'Please select dates first');
+            return;
+        }
+
+        const message = `Hello, I would like to book a stay:\n\n🏨 Property: ${hotel}\n📅 Check-in: ${checkIn}\n📅 Check-out: ${checkOut}\n👥 Occupancy: ${adults}\n🔑 Selection: ${rooms}`;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/966555650876?text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+    }
+
+    var swiper = new Swiper('.swiper-container', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        coverflowEffect: { rotate: 25, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false }
+    });
+
+    let currentLang = 'ar';
+    const i18n = {
+        ar: {
+            "logo-title": "فندق ريان الجوار", "logo-sub": "مكة المكرمة - أبراج الجعفرية", "nav-policy": "الخدمات والسياسات",
+            "hero-title": "أهلاً بكم في فندق ريان الجوار", "hero-sub": "بوابتكم لإقامة إيمانية مريحة واقتصادية في قلب مكة المكرمة بحي الجميزة، على بُعد دقائق معدودة مشياً من ساحات التوسعة الشمالية للمسجد الحرام الشريف.",
+            "btn-book": "احجز إقامتك الآن", "btn-more": "اكتشف المرافق",
+            "rm-title": "أجنحة وغرف مجهزة بالكامل", "rm-sub": "نوفر لك وحدات سكنية متكاملة الخدمات تم توحيدها لتلبي أعلى تطلعات الراحة",
+            "tag-eco": "اقتصادي مميز", "tag-group": "مثالي للمجموعات", "tag-fam": "خصوصية عائلية",
+            "r1-t": "غرف ثنائية (Twin / Double)", "r1-d": "تضم سريرين منفردين أو سرير ماستر كبير بتصميم عملي مريح مع إطلالات مميزة على المدينة أو الشارع الرئيسي.",
+            "r2-t": "غرف ثلاثية (Triple Rooms)", "r2-d": "مساحة رحبة ومجهزة بالكامل بـ 3 أسرّة منفردة لتضمن الراحة والمرونة التامة لرفاق العمرة والرحلات الجماعية.",
+            "r3-t": "غرف رباعية وخماسية عائلية", "r3-d": "أفضل خيار يجمع شمل العائلة في غرف واسعة تضمن الخصوصية الكاملة وتوفير النفقات لضيوف الرحمن.",
+            "f-ac": "تكييف", "f-wifi": "واي فاي", "f-tv": "شاشة TV", "f-kettle": "غلاية شاي", "f-ref": "ثلاجة وميني بار",
+            "gal-title": "ألبوم الصور الاحترافي", "gal-sub": "تصفح أروقة الفندق ومرافقه المصممة بعناية لخدمتكم",
+            "whatsapp-txt": "احجز معنا مباشرة", "footer-text": "© 1448 هـ - 2026 م فندق ريان الجوار - جميع الحقوق محفوظة.",
+            "am-title":"خدمات فندقية راقية", "am-sub":"نهتم بأدق التفاصيل لتوفير تجربة إقامة متكاملة ومريحة طوال فترة زيارتك",
+            "am-c1-t":"استقبال على مدار الساعة", "am-c1-d":"فريق محترف ومستعد لخدمتكم وتسهيل إجراءات الدخول والخروج بكل مرونة.",
+            "am-c2-t":"خدمة الغرف والنظافة", "am-c2-d":"عناية دورية يومية وتغيير مستمر للبياضات لضمان أعلى مستويات النظافة والتعقيم.",
+            "am-c3-t":"مصاعد حديثة وسريعة", "am-c3-d":"أنظمة مصاعد متطورة تلبي حركة النزلاء في أوقات الصلوات بكل انسيابية.",
+            "am-c4-t":"غسيل وكي الملابس", "am-c4-d":"خدمات لوجستية سريعة لغسيل وكي ملابس الإحرام والملابس الشخصية للنزلاء.",
+            "loc-t":"موقعنا الاستراتيجي", "loc-d":"يقع فندق ريان الجوار في حي الجميزة العريق داخل مكة المكرمة بموقع مثالي يتيح لضيوف الرحمن سرعة الوصول إلى المسجد الحرام.",
+            "btn-map":"افتح في خرائط Google", "rev-title":"آراء ضيوف الرحمن", "rev-sub":"نعتز بثقة نزلاء الفندق ويسعدنا دائماً تقديم الأفضل لهم",
+            "f-ab-t":"فندق ريان الجوار", "f-ab-d":"وجهتكم المثالية في مكة المكرمة لإقامة تجمع بين الاقتصاد، الراحة، والخدمة الموحدة المتميزة. نتشرف بخدمة الحجاج والمعتمرين طوال العام بأعلى معايير الأمان والسلامة المهنية.",
+            "f-ln-t":"روابط سريعة", "f-ct-t":"تواصل معنا",
+            "rev1-txt": "\"الفندق نظيف جداً والمعاملة راقية من موظفي الاستقبال، والمشي للحرم سهل ومباشر عبر الساحات الجديدة. خيار اقتصادي وممتاز للعائلات.\"", "rev2-txt": "\"أقمنا في الغرفة الثلاثية وكانت مريحة والخدمات متكاملة والمكيف ممتاز. نشكر إدارة الفندق على حسن الضيافة والالتزام بالمعايير.\"",
+            "rev-guest": "نزيل محلي", "rev-umrah": "معتمر", "f-l1": "الرئيسية", "f-l2": "الخدمات والمرافق", "f-l3": "سياسات الفندق الموحدة", "f-c3": "مكة المكرمة - الجميزة - أبراج الجعفرية",
+            "l-p1": "مكة المكرمة - حي الجميزة - أبراج الجعفرية.", "l-p2": "دقائق معدودة مشياً إلى ساحات الحرم الشمالية الجديدة.", "l-p3": "سهولة خروج ودخول الحافلات وسيارات الأجرة للموقع."
+        },
+        en: {
+            "logo-title": "Al Rayyan Al Jiwar Hotel", "logo-sub": "Makkah - Al Jaafariyah Towers", "nav-policy": "Services & Policies",
+            "hero-title": "Welcome to Al Rayyan Al Jiwar Hotel", "hero-sub": "Your gateway to a spiritual, comfortable, and budget-friendly stay in the heart of Makkah, Al-Jummayzah district, just a few minutes walking distance from the Holy Haram's Northern Expansion.",
+            "btn-book": "Book Your Stay Now", "btn-more": "Discover Facilities",
+            "rm-title": "Fully Equipped Rooms & Suites", "rm-sub": "We provide premium integrated units unified perfectly to meet your highest comfort standards",
+            "tag-eco": "Premium Economy", "tag-group": "Ideal for Groups", "tag-fam": "Family Privacy",
+            "r1-t": "Twin / Double Rooms", "r1-d": "Featuring two single beds or a large master bed with a highly practical layout and lovely views of the city or main street.",
+            "r2-t": "Triple Rooms", "r2-d": "Spacious layout fully equipped with 3 single beds to guarantee maximum flexibility and absolute comfort for group pilgrims.",
+            "r3-t": "Quadruple & Family Rooms", "r3-d": "The finest choice to keep the family together in generous spaces designed to protect privacy and optimize budget.",
+            "f-ac": "AC", "f-wifi": "Wi-Fi", "f-tv": "Smart TV", "f-kettle": "Kettle", "f-ref": "Fridge & Minibar",
+            "gal-title": "Professional Photo Album", "gal-sub": "Browse hotel facilities and internal views with premium transition effect",
+            "whatsapp-txt": "Book Directly With Us", "footer-text": "© 1448 AH - 2026 AM Rayan Al Jiwar Hotel - All Rights Reserved.",
+            "am-title":"Premium Amenities", "am-sub":"We attend to every detail to deliver an integrated and comfortable hospitality experience",
+            "am-c1-t":"24/7 Front Desk", "am-c1-d":"Professional staff ready around the clock to ensure seamless check-in and check-out procedures.",
+            "am-c2-t":"Housekeeping Services", "am-c2-d":"Regular daily care and fresh linens to assure the ultimate clean and sanitized atmosphere.",
+            "am-c3-t":"Modern Fast Elevators", "am-c3-d":"Advanced elevator systems perfectly handling peak times smoothly during daily prayers.",
+            "am-c4-t":"Laundry & Pressing", "am-c4-d":"Quick logistic care for your Ihram outfits and personal laundry items during your stay.",
+            "loc-t":"Strategic Location", "loc-d":"Al Rayyan Al Jiwar Hotel is located in the authentic Al-Jummayzah district in Makkah, providing excellent access to the Holy Haram.",
+            "btn-map":"Open in Google Maps", "rev-title":"Pilgrims Feedback", "rev-sub":"We deeply cherish our guests' trust and happily welcome their high reviews",
+            "f-ab-t":"Al Rayyan Al Jiwar Hotel", "f-ab-d":"Your ideal choice in Makkah combining premium economy, top comfort, and unified service. We proudly serve pilgrims all year round keeping high health and workplace safety standards.",
+            "f-ln-t":"Quick Links", "f-ct-t":"Contact Us",
+            "rev1-txt": "\"Extremely clean hotel and exceptional hospitality by front desk staff. The walk to Haram is very direct. Highly recommended for families.\"", "rev2-txt": "\"We occupied a triple room, beds were cozy and AC was perfect. Heartfelt thanks to the management for maintaining such premium standards.\"",
+            "rev-guest": "Local Guest", "rev-umrah": "Pilgrim", "f-l1": "Home", "f-l2": "Facilities", "f-l3": "Unified Policies", "f-c3": "Makkah - Al-Jummayzah - Al-Jaafariyah Towers",
+            "l-p1": "Makkah - Al-Jummayzah District - Al Jaafariyah Towers.", "l-p2": "A short brief walking distance to Haram's new expansion yard.", "l-p3": "Very smooth transit entry/exit for buses and private cabs."
+        }
+    };
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+        
+        if (currentLang === 'en') {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.documentElement.setAttribute('lang', 'en');
+            document.getElementById('lang-toggle-btn').innerText = 'العربية';
+        } else {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            document.getElementById('lang-toggle-btn').innerText = 'English';
+        }
+
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (i18n[currentLang][key]) {
+                const icon = element.querySelector('i');
+                if (icon) {
+                    element.innerHTML = '';
+                    element.appendChild(icon);
+                    element.innerHTML += ' ' + i18n[currentLang][key];
+                } else {
+                    element.innerText = i18n[currentLang][key];
+                }
+            }
+        });
+        AOS.refresh();
+    }
+</script>
+</body>
+</html>
