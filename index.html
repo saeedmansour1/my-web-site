@@ -37,20 +37,20 @@
             z-index: 1000; padding: 15px 0;
             border-bottom: 1px solid rgba(201, 168, 124, 0.15);
         }
-        .nav-container { display: flex; align-items: center; justify-content: space-between; }
+        .nav-container { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
         .logo h1 { font-size: 1.6rem; font-weight: 900; color: var(--islamic-gold); }
         .logo p { font-size: 0.75rem; color: var(--stone-beige); }
         .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
-        .btn-nav-policy { background: var(--islamic-gold); color: var(--petrol-dark); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold; transition: var(--transition); }
+        .btn-nav-policy { background: var(--islamic-gold); color: var(--petrol-dark); padding: 10px 20px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: bold; transition: var(--transition); white-space: nowrap; }
         .btn-nav-policy:hover { background: var(--white); color: var(--petrol-dark); transform: translateY(-2px); }
-        .lang-btn { background: rgba(201, 168, 124, 0.15); border: 1px solid var(--islamic-gold); color: var(--islamic-gold); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+        .lang-btn { background: rgba(201, 168, 124, 0.15); border: 1px solid var(--islamic-gold); color: var(--islamic-gold); padding: 6px 14px; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 0.85rem; white-space: nowrap; }
 
         /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh;
             background: linear-gradient(180deg, rgba(15, 50, 67, 0.5) 0%, rgba(15, 50, 67, 0.95) 100%), 
                         url('in.jpeg?auto=compress&cs=tinysrgb&w=1920') no-repeat center center/cover;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 0 60px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 140px 0 60px;
         }
         .hero-content h2 { font-size: 3.5rem; font-weight: 900; color: var(--white); margin-bottom: 15px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .hero-content p { color: var(--stone-beige); font-size: 1.3rem; max-width: 800px; margin: 0 auto 30px; line-height: 1.6; }
@@ -87,7 +87,7 @@
         .room-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
         .luxury-room-card:hover .room-img-box img { transform: scale(1.1); }
         .room-tag { position: absolute; top: 15px; left: 15px; background: rgba(15, 50, 67, 0.85); color: var(--islamic-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid var(--islamic-gold); z-index: 2; }
-        html[dir="ltr"] .room-tag { left: auto; right: 15px; }
+        html[dir=\"ltr\"] .room-tag { left: auto; right: 15px; }
         .room-details { padding: 25px; }
         .room-details h4 { font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
         .room-details p { font-size: 0.95rem; color: var(--stone-beige); line-height: 1.6; margin-bottom: 20px; }
@@ -126,7 +126,7 @@
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .review-card { background: var(--petrol-dark); border: 1px solid rgba(201,168,124,0.1); padding: 30px; border-radius: 15px; position: relative; }
         .review-card::before { content: '“'; position: absolute; top: 10px; right: 20px; font-size: 4rem; color: rgba(201,168,124,0.1); font-family: serif; }
-        html[dir="rtl"] .review-card::before { right: auto; left: 20px; }
+        html[dir=\"rtl\"] .review-card::before { right: auto; left: 20px; }
         .stars { color: var(--islamic-gold); margin-bottom: 15px; font-size: 0.9rem; }
         .review-card p { font-size: 0.95rem; color: var(--stone-beige); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
         .reviewer-info { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(201,168,124,0.1); padding-top: 15px; }
@@ -136,8 +136,8 @@
 
         /* --- FLOATING WHATSAPP --- */
         .whatsapp-floating { position: fixed; bottom: 30px; z-index: 9999; background: #25D366; color: #FFFFFF; padding: 12px 22px; border-radius: 50px; font-size: 1rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4); transition: var(--transition); }
-        html[dir="rtl"] .whatsapp-floating { left: 30px; right: auto; }
-        html[dir="ltr"] .whatsapp-floating { right: 30px; left: auto; }
+        html[dir=\"rtl\"] .whatsapp-floating { left: 30px; right: auto; }
+        html[dir=\"ltr\"] .whatsapp-floating { right: 30px; left: auto; }
         .whatsapp-floating:hover { transform: translateY(-5px) scale(1.05); color: #FFFFFF; }
 
         /* --- FOOTER GRAND LUXE --- */
@@ -147,7 +147,7 @@
         .footer-about p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
         .footer-links h4, .footer-contact h4 { font-size: 1.2rem; color: var(--white); margin-bottom: 20px; font-weight: 700; position: relative; padding-bottom: 8px; }
         .footer-links h4::after, .footer-contact h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--islamic-gold); }
-        html[dir="rtl"] .footer-links h4::after, html[dir="rtl"] .footer-contact h4::after { left: auto; right: 0; }
+        html[dir=\"rtl\"] .footer-links h4::after, html[dir=\"rtl\"] .footer-contact h4::after { left: auto; right: 0; }
         .footer-links ul { list-style: none; }
         .footer-links ul li { margin-bottom: 12px; }
         .footer-links ul li a { color: var(--stone-beige); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
@@ -162,7 +162,13 @@
             .location-grid, .footer-grid { grid-template-columns: 1fr; gap: 30px; }
         }
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 12px; text-align: center; }
+            .nav-container { flex-direction: column; gap: 10px; text-align: center; justify-content: center; width: 100%; }
+            .nav-links { gap: 10px; justify-content: center; width: 100%; }
+            .btn-nav-policy { padding: 8px 16px; font-size: 0.8rem; }
+            .lang-btn { padding: 5px 12px; font-size: 0.75rem; }
+            .logo h1 { font-size: 1.4rem; }
+            .logo p { font-size: 0.7rem; }
+            .hero { padding-top: 180px; } /* زيادة الهامش العلوي لحماية محتوى الهيرو من الاختفاء تحت الهيدر */
             .hero-content h2 { font-size: 2.3rem; }
             .hero-content p { font-size: 1rem; }
             .search-grid { grid-template-columns: 1fr; }
@@ -177,7 +183,7 @@
     <div class="container nav-container">
         <div class="logo">
             <h1 data-key="logo-title">فندق ريان الجوار</h1>
-            <p data-key="logo-sub"><i class="fas fa-mosque"></i> مكة المكرمة - أبراج ريان الجوار ( الجعفرية سابقا)</p>
+            <p data-key="logo-sub"><i class="fas fa-mosque"></i> مكة المكرمة - أبراج ريان الجوار( الجعفرية سابقا )</p>
         </div>
         <ul class="nav-links">
             <li><a href="policies.html" class="btn-nav-policy" data-key="nav-policy">الخدمات والسياسات</a></li>
@@ -308,7 +314,7 @@
 <section class="section-padding gallery-section">
     <div class="container">
         <div class="sec-title" data-aos="fade-up">
-            <h3 data-key="gal-title">تعرف علينا </h3>
+            <h3 data-key="gal-title">ألبوم الصور الاحترافي</h3>
             <p data-key="gal-sub">تصفح أروقة الفندق ومرافقه المصممة بعناية لخدمتكم</p>
         </div>
 
@@ -462,7 +468,7 @@
             <ul>
                 <li><i class="fas fa-phone"></i> <span>+966 55 565 0876</span></li>
                 <li><i class="fas fa-envelope"></i> <span>info@alrayyanhotel.com</span></li>
-                <li><i class="fas fa-mosque"></i> <span data-key="f-c3">مكة المكرمة - الجميزة - أبراج ريان الجوار (الجعفرية سابقا )</span></li>
+                <li><i class="fas fa-mosque"></i> <span data-key="f-c3">مكة المكرمة - الجميزة - أبراج ريان الجوار( الجعفرية سابقا )</span></li>
             </ul>
         </div>
     </div>
