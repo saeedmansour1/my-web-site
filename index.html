@@ -96,8 +96,8 @@
         .room-mini-feats li i { color: var(--islamic-gold); }
 
         /* --- GALLERY ALBUM (SWIPER) --- */
-        .gallery-section { background: var(--petrol-mid); border-top: 1px solid rgba(201,168,124,0.1); border-bottom: 1px solid rgba(201,168,124,0.1); }
-        .swiper-container { width: 100%; padding-top: 20px; padding-bottom: 50px; }
+        .gallery-section { background: var(--petrol-mid); border-top: 1px solid rgba(201,168,124,0.1); border-bottom: 1px solid rgba(201,168,124,0.1); overflow: hidden; }
+        .swiper-container { width: 100%; padding-top: 20px; padding-bottom: 50px; overflow: hidden; }
         .swiper-slide { background-position: center; background-size: cover; width: 320px; height: 410px; border-radius: 16px; overflow: hidden; border: 2px solid rgba(201,168,124,0.2); transition: var(--transition); position: relative; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
         .swiper-slide-active { border-color: var(--islamic-gold); box-shadow: 0 0 30px rgba(201,168,124,0.3); }
@@ -166,8 +166,8 @@
             .hero-content h2 { font-size: 2.3rem; }
             .hero-content p { font-size: 1rem; }
             .search-grid { grid-template-columns: 1fr; }
-            /* تعديل قياسات ألبوم الصور على الموبايل ليصبح متناسقاً وملائماً */
             .swiper-slide { width: 260px; height: 340px; }
+            .swiper-container { max-width: 100vw; }
         }
     </style>
 </head>
@@ -177,7 +177,7 @@
     <div class="container nav-container">
         <div class="logo">
             <h1 data-key="logo-title">فندق ريان الجوار</h1>
-            <p data-key="logo-sub"><i class="fas fa-mosque"></i> مكة المكرمة - أبراج الجعفرية</p>
+            <p data-key="logo-sub"><i class="fas fa-mosque"></i> مكة المكرمة - أبراض الجعفرية</p>
         </div>
         <ul class="nav-links">
             <li><a href="policies.html" class="btn-nav-policy" data-key="nav-policy">الخدمات والسياسات</a></li>
@@ -308,7 +308,7 @@
 <section class="section-padding gallery-section">
     <div class="container">
         <div class="sec-title" data-aos="fade-up">
-            <h3 data-key="gal-title">ألبوم الصور الاحترافي</h3>
+            <h3 data-key="gal-title">تعرف علينا </h3>
             <p data-key="gal-sub">تصفح أروقة الفندق ومرافقه المصممة بعناية لخدمتكم</p>
         </div>
 
