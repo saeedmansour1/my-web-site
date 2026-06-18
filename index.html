@@ -87,7 +87,7 @@
         .room-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
         .luxury-room-card:hover .room-img-box img { transform: scale(1.1); }
         .room-tag { position: absolute; top: 15px; left: 15px; background: rgba(15, 50, 67, 0.85); color: var(--islamic-gold); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; border: 1px solid var(--islamic-gold); z-index: 2; }
-        html[dir=\"ltr\"] .room-tag { left: auto; right: 15px; }
+        html[dir="ltr"] .room-tag { left: auto; right: 15px; }
         .room-details { padding: 25px; }
         .room-details h4 { font-size: 1.4rem; color: var(--white); margin-bottom: 10px; }
         .room-details p { font-size: 0.95rem; color: var(--stone-beige); line-height: 1.6; margin-bottom: 20px; }
@@ -126,7 +126,7 @@
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .review-card { background: var(--petrol-dark); border: 1px solid rgba(201,168,124,0.1); padding: 30px; border-radius: 15px; position: relative; }
         .review-card::before { content: '“'; position: absolute; top: 10px; right: 20px; font-size: 4rem; color: rgba(201,168,124,0.1); font-family: serif; }
-        html[dir=\"rtl\"] .review-card::before { right: auto; left: 20px; }
+        html[dir="rtl"] .review-card::before { right: auto; left: 20px; }
         .stars { color: var(--islamic-gold); margin-bottom: 15px; font-size: 0.9rem; }
         .review-card p { font-size: 0.95rem; color: var(--stone-beige); line-height: 1.6; margin-bottom: 20px; font-style: italic; }
         .reviewer-info { display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(201,168,124,0.1); padding-top: 15px; }
@@ -136,8 +136,8 @@
 
         /* --- FLOATING WHATSAPP --- */
         .whatsapp-floating { position: fixed; bottom: 30px; z-index: 9999; background: #25D366; color: #FFFFFF; padding: 12px 22px; border-radius: 50px; font-size: 1rem; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4); transition: var(--transition); }
-        html[dir=\"rtl\"] .whatsapp-floating { left: 30px; right: auto; }
-        html[dir=\"ltr\"] .whatsapp-floating { right: 30px; left: auto; }
+        html[dir="rtl"] .whatsapp-floating { left: 30px; right: auto; }
+        html[dir="ltr"] .whatsapp-floating { right: 30px; left: auto; }
         .whatsapp-floating:hover { transform: translateY(-5px) scale(1.05); color: #FFFFFF; }
 
         /* --- FOOTER GRAND LUXE --- */
@@ -147,7 +147,7 @@
         .footer-about p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
         .footer-links h4, .footer-contact h4 { font-size: 1.2rem; color: var(--white); margin-bottom: 20px; font-weight: 700; position: relative; padding-bottom: 8px; }
         .footer-links h4::after, .footer-contact h4::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--islamic-gold); }
-        html[dir=\"rtl\"] .footer-links h4::after, html[dir=\"rtl\"] .footer-contact h4::after { left: auto; right: 0; }
+        html[dir="rtl"] .footer-links h4::after, html[dir="rtl"] .footer-contact h4::after { left: auto; right: 0; }
         .footer-links ul { list-style: none; }
         .footer-links ul li { margin-bottom: 12px; }
         .footer-links ul li a { color: var(--stone-beige); text-decoration: none; font-size: 0.9rem; transition: var(--transition); }
@@ -157,23 +157,28 @@
         .footer-contact ul li i { color: var(--islamic-gold); margin-top: 3px; }
         .footer-bottom { border-top: 1px solid rgba(201,168,124,0.1); padding-top: 25px; text-align: center; font-size: 0.85rem; color: rgba(215,204,188,0.5); }
 
+        /* --- MEDIA QUERIES RESPONSIVE REPAIR --- */
         @media (max-width: 992px) {
             .search-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
             .location-grid, .footer-grid { grid-template-columns: 1fr; gap: 30px; }
         }
         @media (max-width: 768px) {
-            .nav-container { flex-direction: column; gap: 10px; text-align: center; justify-content: center; width: 100%; }
-            .nav-links { gap: 10px; justify-content: center; width: 100%; }
+            .nav-container { flex-direction: column; gap: 12px; text-align: center; justify-content: center; width: 100%; padding: 5px 10px; }
+            .nav-links { gap: 15px; justify-content: center; width: 100%; padding: 0; }
             .btn-nav-policy { padding: 8px 16px; font-size: 0.8rem; }
             .lang-btn { padding: 5px 12px; font-size: 0.75rem; }
             .logo h1 { font-size: 1.4rem; }
             .logo p { font-size: 0.7rem; }
-            .hero { padding-top: 180px; } /* زيادة الهامش العلوي لحماية محتوى الهيرو من الاختفاء تحت الهيدر */
-            .hero-content h2 { font-size: 2.3rem; }
-            .hero-content p { font-size: 1rem; }
-            .search-grid { grid-template-columns: 1fr; }
+            .hero { padding-top: 220px; padding-bottom: 40px; min-height: auto; } 
+            .hero-content h2 { font-size: 2rem; padding: 0 10px; }
+            .hero-content p { font-size: 0.95rem; padding: 0 15px; }
+            .search-engine-wrapper { padding: 0 15px; margin-top: 30px; }
+            .search-grid { grid-template-columns: 1fr !important; gap: 15px; }
+            .search-engine-box { padding: 15px; }
             .swiper-slide { width: 260px; height: 340px; }
             .swiper-container { max-width: 100vw; }
+            .rooms-showcase-grid { grid-template-columns: 1fr; padding: 0 10px; }
+            .section-padding { padding: 50px 0; }
         }
     </style>
 </head>
